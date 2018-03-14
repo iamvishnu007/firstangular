@@ -11,39 +11,153 @@
 <body>
   <app-root>
     <style>
-      body {
-    overflow: hidden;
-  }
-  .spinner div {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    left: -20px;
-    top: 40px;
-    background-color: #333;
-    border-radius: 50%;
-    animation: move 4s infinite cubic-bezier(.2,.64,.81,.23);
-  }
-  .spinner div:nth-child(2) {
-    animation-delay: 150ms;
-  }
-  .spinner div:nth-child(3) {
-    animation-delay: 300ms;
-  }
-  .spinner div:nth-child(4) {
-    animation-delay: 450ms;
-  }
-  @keyframes move {
-    0% {left: 0%;}
-    75% {left:100%;}
-    100% {left:100%;}
-  }
-      </style>
-    <div class="spinner">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div></app-root>
+    body {
+	box-sizing: border-box !important;
+	padding: 0;
+	margin: 0;
+	letter-spacing: 2px;
+}
+
+.main-page-container {
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow: auto;
+	background: radial-gradient(#003841, 20%, #002339);
+
+}
+
+.neon-light{
+	width:200px;
+	height: 10px;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	background: #00f5ff;
+	border-radius: 3px;
+	box-shadow:
+		0 0 100px #00f5ff,
+		0 0 200px #00f5ff,
+    0 0 1000px #00f5ff,
+    0 0 1500px #00f5ff,
+		0 0 20px #00f5ff,
+		inset 0 0 5px blue;
+  animation: flicker 1.5s linear infinite;
+}
+
+.neon-light:before{
+	content: "";
+	width:30px;
+	height: 10px;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	background: #006469;
+	border-radius: 3px;
+	box-shadow:		0 0 100px #000,
+		0 0 50px #000,
+    0 0 50px #000,
+		inset 0 0 5px #000;
+	animation: animate 2s linear infinite;
+}
+
+@keyframes animate{
+	0%{
+		transform: translateX(-85px);
+	}
+	50%{
+		transform: translateX(85px);
+	}
+	100%{		
+		transform: translateX(-85px);
+	}
+}
+
+p{
+	width:100%;
+	height: 10px;
+	position: absolute;
+	top: -100px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	color: aqua;
+	margin: auto;
+	text-shadow: 0 -6px 10px  black;
+	animation: lights 1.5s linear infinite, flicker 1.5s  infinite;
+}
+
+@keyframes lights{
+	0%{
+	color: aqua;
+	}
+	50%{
+	color: white;
+	}
+	100%{		
+	color: aqua;
+	}
+}
+
+@keyframes flicker{
+	0%{
+	opacity: 1;
+	}
+	10%{
+	opacity: 0.5;
+	}
+	15%{		
+	opacity: 1;
+	}
+	20%{		
+	opacity: 0.5;
+	}
+	25%{		
+	opacity: 1;
+	}
+	30%{		
+	opacity: 0.3;
+	}
+	35%{		
+	opacity: 1;
+	}
+	50%{		
+	opacity: 1;
+	}
+	90%{		
+	opacity: 0.7;
+	}
+	95%{		
+	opacity: 1;
+	}
+	100%{		
+	opacity: .3;
+	}
+}
+ </style>
+ 
+ <div class="main-page-container">
+	
+	<p>page is loading . . . </p>
+	
+		<div class="neon-light"></div>
+	
+	</div>
+
+
+
+</app-root>
 </body>
 </html>
